@@ -1,0 +1,48 @@
+@import 'tailles';
+@import 'fonts';
+@import 'couleurs';
+@import 'mixins';
+@include font-face(fontello, font/fontello);
+
+html{
+    font-size: $tailleRoot;
+}
+body{
+    background: #fff;
+}
+.toto{
+    @include coinsarrondis(60);
+    height: 400px;
+    @include essai();
+    
+    @media screen and (min-width:1024px){
+        background: blue;
+    }
+    @media screen and (min-width:1200px){
+        background: pink;
+    }
+    
+}
+
+.tata{
+    @extend .toto;
+    color:bisque;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.ajout:before,.ajout:after{
+    font-family: fontello;
+    content:"\E803";
+}
+
+#image{
+    background: url(../../images/logo.png) no-repeat fixed;
+    background-size: cover;
+    height: 400px;
+    width: 500px;
+}
+#texte{
+    background: #F00;
+    height: 5000px;
+    width: 500px;
+}

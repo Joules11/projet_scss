@@ -1,0 +1,48 @@
+
+
+@mixin coinsarrondis($valeur){
+    border-radius: $valeur+%;
+    background: $vert;
+}
+
+@mixin essai(){
+    color:aqua;
+    font-size:3rem;
+    &:before{
+        content: "";
+        display: block;
+        width:50px;
+        height:50px;
+        background: url(../../images/logo.png);
+    }
+    &:after{
+        content: "toto";
+    }
+}
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
